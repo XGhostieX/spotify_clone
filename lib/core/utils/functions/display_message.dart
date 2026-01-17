@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../theme/app_colors.dart';
-
 // void displayMessage(String message, BuildContext context) {
 //   var snackBar = SnackBar(
 //     content: Text(message),
@@ -16,7 +14,7 @@ void displayMessage(String message, bool isError) {
     toastLength: isError ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
     // gravity: ToastGravity.SNACKBAR,
     // timeInSecForIosWeb: 3,
-    backgroundColor: isError ? AppColors.redColor : Colors.green,
+    backgroundColor: isError ? Colors.red : Colors.green,
     textColor: Colors.white,
     fontSize: 16.0,
   );

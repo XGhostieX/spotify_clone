@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'core/theme/app_theme.dart';
+import 'features/auth/presentation/views/auth_view.dart';
+
 void main() {
   runApp(const Spotify());
 }
@@ -11,8 +14,9 @@ class Spotify extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Spotify',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      home: const Scaffold(),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.darkTheme,
+      home: const AuthView(),
     );
   }
 }
