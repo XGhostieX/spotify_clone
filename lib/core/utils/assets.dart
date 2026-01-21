@@ -1,22 +1,14 @@
 class Assets {
-  static const logo = 'assets/images/logo.png';
-  static const google = 'assets/images/google.png';
-  static const emote = 'assets/images/emote.png';
-  static const upvote = 'assets/images/upvote.png';
-  static const downvote = 'assets/images/downvote.png';
-  static const avatar =
-      'https://external-preview.redd.it/5kh5OreeLd85QsqYO1Xz_4XSLYwZntfjqou-8fyBFoE.png?auto=webp&s=dbdabd04c399ce9c761ff899f5d38656d1de87c2';
-  static const banner =
-      'https://thumbs.dreamstime.com/b/abstract-stained-pattern-rectangle-background-blue-sky-over-fiery-red-orange-color-modern-painting-art-watercolor-effe-texture-123047399.jpg';
-
-  static const awards = {
-    'awesome': 'assets/images/awesome.png',
-    'gold': 'assets/images/gold.png',
-    'helpful': 'assets/images/helpful.png',
-    'platinum': 'assets/images/platinum.png',
-    'plusone': 'assets/images/plusone.png',
-    'rocket': 'assets/images/rocket.png',
-    'thankyou': 'assets/images/thankyou.png',
-    'til': 'assets/images/til.png',
-  };
+  static const connectDevice = 'assets/images/connect-device.png';
+  static const homeFilled = 'assets/images/home_filled.png';
+  static const homeUnfilled = 'assets/images/home_unfilled.png';
+  static const library = 'assets/images/library.png';
+  static const nextSong = 'assets/images/next-song.png';
+  static const playlist = 'assets/images/playlist.png';
+  static const previusSong = 'assets/images/previus-song.png';
+  static const pullDownArrow = 'assets/images/pull-down-arrow.png';
+  static const repeat = 'assets/images/repeat.png';
+  static const searchFilled = 'assets/images/search_filled.png';
+  static const searchUnfilled = 'assets/images/search_unfilled.png';
+  static const shuffle = 'assets/images/shuffle.png';
 }

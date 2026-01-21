@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/auth/presentation/views/auth_view.dart';
+import 'core/utils/app_router.dart';
 
 void main() {
-  runApp(const Spotify());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const ProviderScope(child: Spotify()));
 }
 
 class Spotify extends StatelessWidget {
@@ -12,11 +15,14 @@ class Spotify extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
+    return MaterialApp.router(
       title: 'Spotify',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const AuthView(),
+      routerConfig: AppRouter.router,
     );
   }
 }
