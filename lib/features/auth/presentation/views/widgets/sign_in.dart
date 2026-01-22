@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_router.dart';
-import '../../../data/repos/auth_repo_impl.dart';
+import '../../views_model/auth_view_model.dart';
 import 'custom_field.dart';
 import 'gradient_button.dart';
 
@@ -30,6 +30,7 @@ class _SignInState extends ConsumerState<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLoading = ref.watch(authViewModelProvider)?.isLoading == true;
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(15).copyWith(top: MediaQuery.sizeOf(context).height / 4),
@@ -70,12 +71,11 @@ class _SignInState extends ConsumerState<SignIn> {
               ),
               const SizedBox(height: 20),
               GradientButton(
-                title: 'Sign In',
+                title: isLoading ? '' : 'Sign In',
                 onpress: () async {
-                  bool isValid = formKey.currentState!.validate();
-                  if (isValid) {
+                  if (formKey.currentState!.validate()) {
                     await ref
-                        .read(authRepoProvider)
+                        .read(authViewModelProvider.notifier)
                         .signin(email: emailController.text, password: passwordController.text);
                   }
                 },

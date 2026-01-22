@@ -1,13 +1,20 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/models/user_model.dart';
 import '../../../../core/utils/constants.dart';
 import 'auth_repo.dart';
+
+part 'auth_repo_impl.g.dart';
+
+@riverpod
+AuthRepo authRepo(AuthRepoRef ref) {
+  return AuthRepoImpl();
+}
 
 class AuthRepoImpl extends AuthRepo {
   @override
@@ -55,5 +62,3 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 }
-
-final authRepoProvider = Provider((ref) => AuthRepoImpl());

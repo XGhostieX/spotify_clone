@@ -27,7 +27,9 @@ class GradientButton extends StatelessWidget {
           backgroundColor: AppColors.transparentColor,
           shadowColor: AppColors.transparentColor,
         ),
-        child: Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+        child: title == ''
+            ? const CircularProgressIndicator.adaptive()
+            : Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
       ),
     );
   }

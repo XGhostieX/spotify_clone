@@ -13,7 +13,7 @@ class AuthFailure extends Failure {
   factory AuthFailure.handleHttpException(int statusCode, String body) {
     switch (statusCode) {
       case 400:
-        return AuthFailure('Bad Request: $body');
+        return AuthFailure(body);
       case 401:
         return AuthFailure('Unauthorized');
       case 403:
