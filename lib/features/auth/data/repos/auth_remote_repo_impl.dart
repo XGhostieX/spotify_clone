@@ -7,16 +7,16 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/models/user_model.dart';
 import '../../../../core/utils/constants.dart';
-import 'auth_repo.dart';
+import 'auth_remote_repo.dart';
 
-part 'auth_repo_impl.g.dart';
+part 'auth_remote_repo_impl.g.dart';
 
 @riverpod
-AuthRepo authRepo(AuthRepoRef ref) {
-  return AuthRepoImpl();
+AuthRemoteRepo authRemoteRepo(AuthRemoteRepoRef ref) {
+  return AuthRemoteRepoImpl();
 }
 
-class AuthRepoImpl extends AuthRepo {
+class AuthRemoteRepoImpl extends AuthRemoteRepo {
   @override
   Future<Either<Failure, UserModel>> signin({
     required String email,
@@ -30,7 +30,9 @@ class AuthRepoImpl extends AuthRepo {
       );
       final responseBody = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        return Right(UserModel.fromMap(responseBody));
+        return Right(
+          UserModel.fromMap(responseBody['user']).copyWith(token: responseBody['token']),
+        );
       } else {
         return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
       }
@@ -54,6 +56,24 @@ class AuthRepoImpl extends AuthRepo {
       final responseBody = jsonDecode(response.body);
       if (response.statusCode == 201) {
         return Right(UserModel.fromMap(responseBody));
+      } else {
+        return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
+      }
+    } catch (e) {
+      return Left(AuthFailure.handleNetworkException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserModel>> getUserData({required String token}) async {
+    try {
+      final response = await http.get(
+        Uri.parse('${Constants.serverURL}/auth/'),
+        headers: {'Content-Type': 'application/json', 'x-auth-token': token},
+      );
+      final responseBody = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return Right(UserModel.fromMap(responseBody).copyWith(token: token));
       } else {
         return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
       }

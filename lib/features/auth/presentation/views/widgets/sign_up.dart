@@ -90,13 +90,16 @@ class _SignUpState extends ConsumerState<SignUp> {
                 title: isLoading ? '' : 'Sign Up',
                 onpress: () async {
                   if (formKey.currentState!.validate()) {
-                    await ref
+                    final signUp = await ref
                         .read(authViewModelProvider.notifier)
                         .signup(
                           name: nameController.text,
                           email: emailController.text,
                           password: passwordController.text,
                         );
+                    if (signUp) {
+                      GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+                    }
                   }
                 },
               ),

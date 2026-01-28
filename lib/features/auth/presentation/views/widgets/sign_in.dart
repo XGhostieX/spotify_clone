@@ -74,9 +74,12 @@ class _SignInState extends ConsumerState<SignIn> {
                 title: isLoading ? '' : 'Sign In',
                 onpress: () async {
                   if (formKey.currentState!.validate()) {
-                    await ref
+                    final signIn = await ref
                         .read(authViewModelProvider.notifier)
                         .signin(email: emailController.text, password: passwordController.text);
+                    if (signIn) {
+                      GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+                    }
                   }
                 },
               ),

@@ -1,7 +1,9 @@
 import uuid
 import bcrypt
-from fastapi import APIRouter, Depends, HTTPException
+import jwt
+from fastapi import APIRouter, Depends, HTTPException, Header
 from database import get_db
+from middlewares.auth_middleware import auth_middleware
 from models.user import User
 from pydantic_schemas.user_signin import UserSignin
 from pydantic_schemas.user_signup import UserSignup
@@ -28,4 +30,12 @@ def signin_user(user: UserSignin, db: Session = Depends(get_db)):
     is_match = bcrypt.checkpw(user.password.encode(), user_db.password)
     if not is_match:
         raise HTTPException(400, 'Password is incorrect!')
-    return user_db
+    token = jwt.encode({'id': user_db.id}, 'password_key')
+    return {'token': token, 'user': user_db}
+
+@router.get('/')
+def get_user_data(db: Session = Depends(get_db), user_dict = Depends(auth_middleware)):
+    user = db.query(User).filter(User.id == user_dict['uid']).first()
+    if not user:
+        raise HTTPException(404, 'User not found!')
+    return user
