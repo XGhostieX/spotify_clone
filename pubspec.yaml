@@ -28,8 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  audio_waveforms: ^2.0.2
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
+  dotted_border: ^3.1.0
+  file_picker: ^10.3.10
+  flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.5.1
@@ -40,13 +44,13 @@ dependencies:
   shared_preferences: ^2.5.4
 
 dev_dependencies:
-  flutter_lints: ^5.0.0
-  riverpod_generator: ^2.4.0
   build_runner: ^2.4.10
-  riverpod_lint: ^2.3.10
   custom_lint: ^0.6.4
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.10
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

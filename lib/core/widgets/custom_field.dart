@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/theme/app_colors.dart';
+import '../theme/app_colors.dart';
 
 // ignore: must_be_immutable
 class CustomField extends StatefulWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String hint;
   bool isObscure;
   final FormFieldValidator<String>? validator;
+  final bool readOnly;
+  final VoidCallback? onTap;
   CustomField({
     super.key,
-    required this.controller,
+    this.controller,
     required this.hint,
     this.isObscure = false,
-    required this.validator,
+    this.validator,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -24,6 +28,8 @@ class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: widget.onTap,
+      readOnly: widget.readOnly,
       controller: widget.controller,
       obscureText: widget.isObscure,
       validator: widget.validator,

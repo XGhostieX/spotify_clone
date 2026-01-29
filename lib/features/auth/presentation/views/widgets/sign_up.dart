@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../views_model/auth_view_model.dart';
-import 'custom_field.dart';
+import '../../../../../core/widgets/custom_field.dart';
 import 'gradient_button.dart';
 
 class SignUp extends ConsumerStatefulWidget {
@@ -98,6 +98,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                           password: passwordController.text,
                         );
                     if (signUp) {
+                      // ignore: use_build_context_synchronously
                       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
                     }
                   }
