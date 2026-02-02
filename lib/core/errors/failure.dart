@@ -7,35 +7,35 @@ abstract class Failure {
   Failure(this.errMsg);
 }
 
-class AuthFailure extends Failure {
-  AuthFailure(super.errMsg);
+class ServerFailure extends Failure {
+  ServerFailure(super.errMsg);
 
-  factory AuthFailure.handleHttpException(int statusCode, String body) {
+  factory ServerFailure.handleHttpException(int statusCode, String body) {
     switch (statusCode) {
       case 400:
-        return AuthFailure(body);
+        return ServerFailure(body);
       case 401:
-        return AuthFailure('Unauthorized');
+        return ServerFailure('Unauthorized');
       case 403:
-        return AuthFailure('Forbidden');
+        return ServerFailure('Forbidden');
       case 404:
-        return AuthFailure('Not Found');
+        return ServerFailure('Not Found');
       case 500:
-        return AuthFailure('Internal Server Error');
+        return ServerFailure('Internal Server Error');
       default:
-        return AuthFailure('Request failed with status: $statusCode');
+        return ServerFailure('Request failed with status: $statusCode');
     }
   }
 
-  factory AuthFailure.handleNetworkException(dynamic exception) {
+  factory ServerFailure.handleNetworkException(dynamic exception) {
     if (exception is SocketException) {
-      return AuthFailure('No Internet Connection');
+      return ServerFailure('No Internet Connection');
     } else if (exception is TimeoutException) {
-      return AuthFailure('Connection Timeout');
+      return ServerFailure('Connection Timeout');
     } else if (exception is FormatException) {
-      return AuthFailure('Invalid Response Format');
+      return ServerFailure('Invalid Response Format');
     } else {
-      return AuthFailure('Network Error: $exception');
+      return ServerFailure('Network Error: $exception');
     }
   }
 }

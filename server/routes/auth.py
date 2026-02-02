@@ -1,7 +1,9 @@
+import os
 import uuid
 import bcrypt
+from dotenv import load_dotenv
 import jwt
-from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, Depends, HTTPException
 from database import get_db
 from middlewares.auth_middleware import auth_middleware
 from models.user import User
@@ -24,13 +26,14 @@ def signup_user(user: UserSignup, db: Session = Depends(get_db)):
 
 @router.post('/signin')
 def signin_user(user: UserSignin, db: Session = Depends(get_db)):
+    load_dotenv()
     user_db = db.query(User).filter(User.email == user.email).first()
     if not user_db:
         raise HTTPException(400, 'User with this email dosn\'t exists!')
     is_match = bcrypt.checkpw(user.password.encode(), user_db.password)
     if not is_match:
         raise HTTPException(400, 'Password is incorrect!')
-    token = jwt.encode({'id': user_db.id}, 'password_key')
+    token = jwt.encode({'id': user_db.id}, os.getenv("PASSWORD_KEY"))
     return {'token': token, 'user': user_db}
 
 @router.get('/')

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 
@@ -28,7 +29,7 @@ class GradientButton extends StatelessWidget {
           shadowColor: AppColors.transparentColor,
         ),
         child: title == ''
-            ? const CircularProgressIndicator.adaptive()
+            ? LoadingAnimationWidget.beat(color: AppColors.gradient2, size: 50)
             : Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
       ),
     );

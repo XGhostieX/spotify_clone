@@ -34,10 +34,10 @@ class AuthRemoteRepoImpl extends AuthRemoteRepo {
           UserModel.fromMap(responseBody['user']).copyWith(token: responseBody['token']),
         );
       } else {
-        return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
+        return Left(ServerFailure.handleHttpException(response.statusCode, responseBody['detail']));
       }
     } catch (e) {
-      return Left(AuthFailure.handleNetworkException(e));
+      return Left(ServerFailure.handleNetworkException(e));
     }
   }
 
@@ -57,10 +57,10 @@ class AuthRemoteRepoImpl extends AuthRemoteRepo {
       if (response.statusCode == 201) {
         return Right(UserModel.fromMap(responseBody));
       } else {
-        return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
+        return Left(ServerFailure.handleHttpException(response.statusCode, responseBody['detail']));
       }
     } catch (e) {
-      return Left(AuthFailure.handleNetworkException(e));
+      return Left(ServerFailure.handleNetworkException(e));
     }
   }
 
@@ -75,10 +75,10 @@ class AuthRemoteRepoImpl extends AuthRemoteRepo {
       if (response.statusCode == 200) {
         return Right(UserModel.fromMap(responseBody).copyWith(token: token));
       } else {
-        return Left(AuthFailure.handleHttpException(response.statusCode, responseBody['detail']));
+        return Left(ServerFailure.handleHttpException(response.statusCode, responseBody['detail']));
       }
     } catch (e) {
-      return Left(AuthFailure.handleNetworkException(e));
+      return Left(ServerFailure.handleNetworkException(e));
     }
   }
 }
