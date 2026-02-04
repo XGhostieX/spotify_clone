@@ -14,14 +14,14 @@ import '../../../../../core/widgets/custom_field.dart';
 import '../../views_model/home_view_model.dart';
 import 'audio_wave.dart';
 
-class UploadSong extends ConsumerStatefulWidget {
-  const UploadSong({super.key});
+class UploadSongViewBody extends ConsumerStatefulWidget {
+  const UploadSongViewBody({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _UploadSongState();
 }
 
-class _UploadSongState extends ConsumerState<UploadSong> {
+class _UploadSongState extends ConsumerState<UploadSongViewBody> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController artistController = TextEditingController();
