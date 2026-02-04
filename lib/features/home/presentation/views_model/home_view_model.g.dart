@@ -6,6 +6,20 @@ part of 'home_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$fetchSongsHash() => r'7a7027449ba9fb09b17d3353aa2f9280f1f8f0cd';
+
+/// See also [fetchSongs].
+@ProviderFor(fetchSongs)
+final fetchSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
+  fetchSongs,
+  name: r'fetchSongsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fetchSongsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FetchSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
 String _$homeViewModelHash() => r'9323a55993277b4f884d00e10cbefeed1426c6c6';
 
 /// See also [HomeViewModel].

@@ -44,3 +44,8 @@ def uplaod_song(song: UploadFile = File(...),
     db.commit()
     db.refresh(song)
     return song
+
+@router.get('/list')
+def list_songs(db: Session = Depends(get_db),auth = Depends(auth_middleware)):
+    songs = db.query(Song).all()
+    return songs

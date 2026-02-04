@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/models/song_model.dart';
 import '../../../../core/providers/user_notifier.dart';
 import '../../../../core/utils/functions/color_switch.dart';
 import '../../../../core/utils/functions/display_message.dart';
@@ -10,6 +11,13 @@ import '../../data/repos/home_remote_repo.dart';
 import '../../data/repos/home_remote_repo_impl.dart';
 
 part 'home_view_model.g.dart';
+
+@riverpod
+Future<List<SongModel>> fetchSongs(FetchSongsRef ref) async {
+  final token = ref.watch(userNotifierProvider)!.token;
+  final result = await ref.watch(homeRemoteRepoProvider).fetchSongs(token: token);
+  return result.fold((failure) => throw failure.errMsg, (songs) => songs);
+}
 
 @riverpod
 class HomeViewModel extends _$HomeViewModel {
