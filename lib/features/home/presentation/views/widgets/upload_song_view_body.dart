@@ -36,6 +36,15 @@ class _UploadSongState extends ConsumerState<UploadSongViewBody> {
     super.dispose();
   }
 
+  void resetForm() {
+    setState(() {
+      selectedAudio = null;
+      selectedImage = null;
+      nameController.clear();
+      artistController.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isLoading = ref.watch(homeViewModelProvider)?.isLoading == true;
@@ -47,6 +56,7 @@ class _UploadSongState extends ConsumerState<UploadSongViewBody> {
             appBar: AppBar(
               title: const Text('Upload Song'),
               centerTitle: true,
+              leading: IconButton(onPressed: resetForm, icon: const Icon(Icons.replay_rounded)),
               actions: [
                 IconButton(
                   onPressed: () async {
@@ -65,6 +75,7 @@ class _UploadSongState extends ConsumerState<UploadSongViewBody> {
                               artist: artistController.text,
                               color: selectedColor,
                             );
+                        resetForm();
                       }
                     }
                   },

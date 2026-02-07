@@ -9,7 +9,7 @@ class HomeViewBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const SingleChildScrollView(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(15),
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

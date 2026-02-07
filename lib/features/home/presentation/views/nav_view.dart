@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/utils/assets.dart';
 import 'home_view.dart';
 import 'upload_song_view.dart';
+import 'widgets/music_slab.dart';
 
 class NavView extends StatelessWidget {
   const NavView({super.key});
@@ -17,24 +16,29 @@ class NavView extends StatelessWidget {
       context,
       controller: controller,
       screens: [const HomeView(), const UploadSongView()],
+      floatingActionButton: const Material(child: MusicSlab()),
       items: [
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset(Assets.homeFilled),
-          inactiveIcon: SvgPicture.asset(Assets.home),
+          icon: const Icon(Icons.home_rounded),
+          inactiveIcon: const Icon(Icons.home_outlined),
+          // icon: SvgPicture.asset(Assets.homeFilled),
+          // inactiveIcon: SvgPicture.asset(Assets.home),
           title: ("Home"),
-          activeColorPrimary: AppColors.gradient2,
+          activeColorPrimary: AppColors.whiteColor,
           inactiveColorPrimary: AppColors.inactiveBottomBarItemColor,
         ),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset(Assets.libraryFilled),
-          inactiveIcon: SvgPicture.asset(Assets.library),
+          icon: const Icon(Icons.library_music_rounded),
+          inactiveIcon: const Icon(Icons.library_music_outlined),
+          // icon: SvgPicture.asset(Assets.libraryFilled),
+          // inactiveIcon: SvgPicture.asset(Assets.library),
           title: ("Library"),
-          activeColorPrimary: AppColors.gradient2,
+          activeColorPrimary: AppColors.whiteColor,
           inactiveColorPrimary: AppColors.inactiveBottomBarItemColor,
         ),
       ],
       popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-      // padding: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       backgroundColor: AppColors.backgroundColor,
       isVisible: true,
 

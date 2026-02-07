@@ -3,14 +3,14 @@ class SongModel {
   final String name;
   final String artist;
   final String thumbnail;
-  final String song;
+  final String url;
   final String color;
   SongModel({
     required this.id,
     required this.name,
     required this.artist,
     required this.thumbnail,
-    required this.song,
+    required this.url,
     required this.color,
   });
 
@@ -19,7 +19,7 @@ class SongModel {
     String? name,
     String? artist,
     String? thumbnail,
-    String? song,
+    String? url,
     String? color,
   }) {
     return SongModel(
@@ -27,7 +27,7 @@ class SongModel {
       name: name ?? this.name,
       artist: artist ?? this.artist,
       thumbnail: thumbnail ?? this.thumbnail,
-      song: song ?? this.song,
+      url: url ?? this.url,
       color: color ?? this.color,
     );
   }
@@ -38,7 +38,7 @@ class SongModel {
       'name': name,
       'artist': artist,
       'thumbnail': thumbnail,
-      'song': song,
+      'url': url,
       'color': color,
     };
   }
@@ -49,7 +49,7 @@ class SongModel {
       name: map['name'] ?? '',
       artist: map['artist'] as String,
       thumbnail: map['thumbnail'] ?? '',
-      song: map['song'] ?? '',
+      url: map['url'] ?? '',
       color: map['color'] ?? '',
     );
   }

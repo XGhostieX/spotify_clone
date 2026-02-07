@@ -17,8 +17,8 @@ class LatestSongsItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(7),
           child: CachedNetworkImage(
             imageUrl: song.thumbnail,
-            width: 180,
-            height: 180,
+            width: 160,
+            height: 160,
             fit: BoxFit.cover,
           ),
         ),
@@ -32,7 +32,6 @@ class LatestSongsItem extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        const SizedBox(height: 5),
         Text(
           song.artist,
           maxLines: 1,
