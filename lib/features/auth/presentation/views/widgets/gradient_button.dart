@@ -29,7 +29,7 @@ class GradientButton extends StatelessWidget {
           shadowColor: AppColors.transparentColor,
         ),
         child: title == ''
-            ? LoadingAnimationWidget.beat(color: AppColors.gradient2, size: 50)
+            ? LoadingAnimationWidget.beat(color: AppColors.gradient2, size: 35)
             : Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
       ),
     );

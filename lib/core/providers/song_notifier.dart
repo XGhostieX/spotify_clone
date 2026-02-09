@@ -46,6 +46,12 @@ class SongNotifier extends _$SongNotifier {
     state = state?.copyWith(color: state?.color);
   }
 
+  void seek(double value) {
+    _audioPlayer!.seek(
+      Duration(milliseconds: (value * _audioPlayer!.duration!.inMilliseconds).toInt()),
+    );
+  }
+
   AudioPlayer? audioPlayer() => _audioPlayer;
   bool isPlaying() => _isPlaying;
 }

@@ -21,8 +21,6 @@ class NavView extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.home_rounded),
           inactiveIcon: const Icon(Icons.home_outlined),
-          // icon: SvgPicture.asset(Assets.homeFilled),
-          // inactiveIcon: SvgPicture.asset(Assets.home),
           title: ("Home"),
           activeColorPrimary: AppColors.whiteColor,
           inactiveColorPrimary: AppColors.inactiveBottomBarItemColor,
@@ -30,8 +28,6 @@ class NavView extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.library_music_rounded),
           inactiveIcon: const Icon(Icons.library_music_outlined),
-          // icon: SvgPicture.asset(Assets.libraryFilled),
-          // inactiveIcon: SvgPicture.asset(Assets.library),
           title: ("Library"),
           activeColorPrimary: AppColors.whiteColor,
           inactiveColorPrimary: AppColors.inactiveBottomBarItemColor,
