@@ -1,17 +1,21 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../../features/home/data/repos/home_local_repo.dart';
+import '../../features/home/data/repos/home_local_repo_impl.dart';
 import '../models/song_model.dart';
 
 part 'song_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
 class SongNotifier extends _$SongNotifier {
+  late HomeLocalRepo _homeLocalRepo;
   AudioPlayer? _audioPlayer;
   bool _isPlaying = false;
   bool _isCompleted = false;
   @override
   SongModel? build() {
+    _homeLocalRepo = ref.watch(homeLocalRepoProvider);
     return null;
   }
 
@@ -27,6 +31,7 @@ class SongNotifier extends _$SongNotifier {
         state = state?.copyWith(color: state?.color);
       }
     });
+    _homeLocalRepo.uploadSong(song);
     _audioPlayer!.play();
     _isPlaying = true;
     state = song;

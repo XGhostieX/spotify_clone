@@ -7,13 +7,15 @@ import '../../../../core/models/song_model.dart';
 import '../../../../core/providers/user_notifier.dart';
 import '../../../../core/utils/functions/color_switch.dart';
 import '../../../../core/utils/functions/display_message.dart';
+import '../../data/repos/home_local_repo.dart';
+import '../../data/repos/home_local_repo_impl.dart';
 import '../../data/repos/home_remote_repo.dart';
 import '../../data/repos/home_remote_repo_impl.dart';
 
 part 'home_view_model.g.dart';
 
 @riverpod
-Future<List<SongModel>> fetchSongs(FetchSongsRef ref) async {
+Future<List<SongModel>> fetchRemoteSongs(FetchRemoteSongsRef ref) async {
   final token = ref.watch(userNotifierProvider)!.token;
   final result = await ref.watch(homeRemoteRepoProvider).fetchSongs(token: token);
   return result.fold((failure) => throw failure.errMsg, (songs) => songs);
@@ -22,9 +24,11 @@ Future<List<SongModel>> fetchSongs(FetchSongsRef ref) async {
 @riverpod
 class HomeViewModel extends _$HomeViewModel {
   late final HomeRemoteRepo _homeRemoteRepo;
+  late final HomeLocalRepo _homeLocalRepo;
   @override
   AsyncValue? build() {
     _homeRemoteRepo = ref.watch(homeRemoteRepoProvider);
+    _homeLocalRepo = ref.watch(homeLocalRepoProvider);
     return null;
   }
 
@@ -54,5 +58,9 @@ class HomeViewModel extends _$HomeViewModel {
         displayMessage('Song uploaded Successfully!', false);
       },
     );
+  }
+
+  List<SongModel> fetchLocalSongs() {
+    return _homeLocalRepo.loadSongs();
   }
 }

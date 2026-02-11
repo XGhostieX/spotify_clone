@@ -6,21 +6,23 @@ part of 'home_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchSongsHash() => r'7a7027449ba9fb09b17d3353aa2f9280f1f8f0cd';
+String _$fetchRemoteSongsHash() => r'c170a603d02bc02245048bdb7fa35471b968b47f';
 
-/// See also [fetchSongs].
-@ProviderFor(fetchSongs)
-final fetchSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
-  fetchSongs,
-  name: r'fetchSongsProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$fetchSongsHash,
+/// See also [fetchRemoteSongs].
+@ProviderFor(fetchRemoteSongs)
+final fetchRemoteSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
+  fetchRemoteSongs,
+  name: r'fetchRemoteSongsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fetchRemoteSongsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 // ignore: deprecated_member_use
-typedef FetchSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
-String _$homeViewModelHash() => r'9323a55993277b4f884d00e10cbefeed1426c6c6';
+typedef FetchRemoteSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
+String _$homeViewModelHash() => r'ca551a581771f5f3cde5dff566e696c9d7bb809e';
 
 /// See also [HomeViewModel].
 @ProviderFor(HomeViewModel)

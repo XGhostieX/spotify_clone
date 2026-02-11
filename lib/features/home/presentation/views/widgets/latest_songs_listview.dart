@@ -13,7 +13,7 @@ class LatestSongsListview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ref
-        .watch(fetchSongsProvider)
+        .watch(fetchRemoteSongsProvider)
         .when(
           data: (songs) => Container(
             padding: const EdgeInsets.only(top: 10, bottom: 10),

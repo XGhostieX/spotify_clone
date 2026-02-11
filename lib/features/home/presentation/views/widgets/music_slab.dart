@@ -26,7 +26,8 @@ class MusicSlab extends ConsumerWidget {
               onTap: () => GoRouter.of(context).push(AppRouter.kMusicPlayerView),
               child: Stack(
                 children: [
-                  Container(
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 500),
                     height: 70,
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.sizeOf(context).width - 27,
