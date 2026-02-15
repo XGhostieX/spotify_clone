@@ -6,12 +6,12 @@ part of 'song_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$songNotifierHash() => r'7764cd957ba531f1e65ac0345b90a36361f5ba83';
+String _$songNotifierHash() => r'42f1a9351f074044ec4ff12089fa293583e0a50c';
 
 /// See also [SongNotifier].
 @ProviderFor(SongNotifier)
 final songNotifierProvider =
-    NotifierProvider<SongNotifier, SongModel?>.internal(
+    AutoDisposeNotifierProvider<SongNotifier, SongModel?>.internal(
   SongNotifier.new,
   name: r'songNotifierProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final songNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SongNotifier = Notifier<SongModel?>;
+typedef _$SongNotifier = AutoDisposeNotifier<SongModel?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

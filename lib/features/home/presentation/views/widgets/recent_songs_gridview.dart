@@ -12,9 +12,10 @@ class RecentSongsGridview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<SongModel> songs = ref.watch(homeViewModelProvider.notifier).fetchLocalSongs();
+    ref.watch(songNotifierProvider);
     return Container(
       padding: const EdgeInsets.only(bottom: 30),
-      height: 280,
+      height: 250,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,

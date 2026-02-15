@@ -14,9 +14,9 @@ class HomeViewBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final song = ref.watch(songNotifierProvider);
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(15),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         decoration: song == null
             ? null
             : BoxDecoration(
@@ -24,12 +24,16 @@ class HomeViewBody extends ConsumerWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [hexToColor(song.color), AppColors.transparentColor],
-                  stops: [0.0, 0.3],
+                  stops: [0.0, 0.35],
                 ),
               ),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              'Recently Played Songs',
+              style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
+            ),
             RecentSongsGridview(),
             Text('Latest Songs', style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700)),
             LatestSongsListview(),

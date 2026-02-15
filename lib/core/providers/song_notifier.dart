@@ -1,3 +1,4 @@
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -7,7 +8,7 @@ import '../models/song_model.dart';
 
 part 'song_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class SongNotifier extends _$SongNotifier {
   late HomeLocalRepo _homeLocalRepo;
   AudioPlayer? _audioPlayer;
@@ -22,7 +23,15 @@ class SongNotifier extends _$SongNotifier {
   void updateSong(SongModel song) async {
     await _audioPlayer?.stop();
     _audioPlayer = AudioPlayer();
-    final audioSource = AudioSource.uri(Uri.parse(song.url));
+    final audioSource = AudioSource.uri(
+      Uri.parse(song.url),
+      tag: MediaItem(
+        id: song.id,
+        title: song.name,
+        artist: song.artist,
+        artUri: Uri.parse(song.thumbnail),
+      ),
+    );
     await _audioPlayer!.setAudioSource(audioSource);
     _audioPlayer!.playerStateStream.listen((event) {
       if (event.processingState == ProcessingState.completed) {
