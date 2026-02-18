@@ -9,6 +9,7 @@ class CustomField extends StatefulWidget {
   bool isObscure;
   final FormFieldValidator<String>? validator;
   final bool readOnly;
+  final TextInputType type;
   final VoidCallback? onTap;
   CustomField({
     super.key,
@@ -18,6 +19,7 @@ class CustomField extends StatefulWidget {
     this.validator,
     this.readOnly = false,
     this.onTap,
+    this.type = TextInputType.text,
   });
 
   @override
@@ -32,6 +34,7 @@ class _CustomFieldState extends State<CustomField> {
       readOnly: widget.readOnly,
       controller: widget.controller,
       obscureText: widget.isObscure,
+      keyboardType: widget.type,
       validator: widget.validator,
       decoration: InputDecoration(
         hintText: widget.hint,

@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/views/sign_in_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
-import '../../features/home/presentation/views/music_player_view.dart';
+import '../../features/player/presentation/views/music_player_view.dart';
 import '../../features/home/presentation/views/nav_view.dart';
-import '../../features/home/presentation/views/upload_song_view.dart';
+import '../../features/upload/presentation/views/upload_song_view.dart';
 import '../providers/user_notifier.dart';
 
 abstract class AppRouter {

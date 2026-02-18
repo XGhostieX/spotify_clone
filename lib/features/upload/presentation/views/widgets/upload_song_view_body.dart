@@ -11,7 +11,8 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/functions/display_message.dart';
 import '../../../../../core/utils/functions/pick_file.dart';
 import '../../../../../core/widgets/custom_field.dart';
-import '../../views_model/home_view_model.dart';
+import '../../../../home/presentation/views_model/home_view_model.dart';
+import '../../views_model/upload_view_model.dart';
 import 'audio_wave.dart';
 
 class UploadSongViewBody extends ConsumerStatefulWidget {
@@ -56,8 +57,8 @@ class _UploadSongState extends ConsumerState<UploadSongViewBody> {
             appBar: AppBar(
               title: const Text('Upload Song'),
               centerTitle: true,
-              leading: IconButton(onPressed: resetForm, icon: const Icon(Icons.replay_rounded)),
               actions: [
+                IconButton(onPressed: resetForm, icon: const Icon(Icons.replay_rounded)),
                 IconButton(
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
@@ -67,7 +68,7 @@ class _UploadSongState extends ConsumerState<UploadSongViewBody> {
                         displayMessage('Please select an audio for your song!', true);
                       } else {
                         await ref
-                            .read(homeViewModelProvider.notifier)
+                            .read(uploadViewModelProvider.notifier)
                             .uploadSong(
                               song: selectedAudio!,
                               thumbnail: selectedImage!,

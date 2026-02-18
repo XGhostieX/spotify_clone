@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
@@ -18,43 +17,6 @@ HomeRemoteRepo homeRemoteRepo(HomeRemoteRepoRef ref) {
 }
 
 class HomeRemoteRepoImpl implements HomeRemoteRepo {
-  @override
-  Future<Either<Failure, String>> uploadSong({
-    required File song,
-    required File thumbnail,
-    required String name,
-    required String artist,
-    required String color,
-    required String token,
-  }) async {
-    try {
-      final request = http.MultipartRequest(
-        'POST',
-        Uri.parse('${Constants.serverURL}/song/upload'),
-      );
-      request
-        ..files.addAll([
-          await http.MultipartFile.fromPath('song', song.path),
-          await http.MultipartFile.fromPath('thumbnail', thumbnail.path),
-        ])
-        ..fields.addAll({'name': name, 'artist': artist, 'color': color})
-        ..headers.addAll({'x-auth-token': token});
-      final response = await request.send();
-      if (response.statusCode == 201) {
-        return Right(await response.stream.bytesToString());
-      } else {
-        return Left(
-          ServerFailure.handleHttpException(
-            response.statusCode,
-            await response.stream.bytesToString(),
-          ),
-        );
-      }
-    } catch (e) {
-      return Left(ServerFailure.handleNetworkException(e));
-    }
-  }
-
   @override
   Future<Either<Failure, List<SongModel>>> fetchSongs({required String token}) async {
     try {

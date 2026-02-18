@@ -7,6 +7,7 @@ import '../../../../../core/providers/song_notifier.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/widgets/svg_btn.dart';
+import '../../../../../core/widgets/heart_btn.dart';
 import 'music_slider.dart';
 
 class MusicPlayerViewBody extends ConsumerWidget {
@@ -67,7 +68,7 @@ class MusicPlayerViewBody extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    SvgBtn(onPress: () {}, asset: Assets.heart),
+                    const HeartBtn(),
                   ],
                 ),
                 const SizedBox(height: 15),

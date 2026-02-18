@@ -42,6 +42,7 @@ class _SignInState extends ConsumerState<SignInViewBody> {
             const SizedBox(height: 30),
             CustomField(
               controller: emailController,
+              type: TextInputType.emailAddress,
               hint: 'Email',
               validator: (value) {
                 if (value == null || value.isEmpty) {

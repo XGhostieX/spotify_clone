@@ -29,4 +29,9 @@ class AuthLocalRepoImpl extends AuthLocalRepo {
   String? getToken() {
     return _sharedPreferences.getString('x-auth-token');
   }
+
+  @override
+  void deleteToken() {
+    _sharedPreferences.remove('x-auth-token');
+  }
 }

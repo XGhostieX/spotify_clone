@@ -11,7 +11,7 @@ class UserNotifier extends _$UserNotifier {
     return null;
   }
 
-  void addUser(UserModel user) {
-    state = user;
-  }
+  void addUser(UserModel user) => state = user;
+
+  void signout() => state = null;
 }

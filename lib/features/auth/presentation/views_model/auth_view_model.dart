@@ -89,4 +89,9 @@ class AuthViewModel extends _$AuthViewModel {
     }
     return null;
   }
+
+  void signout() {
+    ref.read(userNotifierProvider.notifier).signout();
+    _authLocalRepo.deleteToken();
+  }
 }

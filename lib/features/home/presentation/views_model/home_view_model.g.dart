@@ -22,7 +22,7 @@ final fetchRemoteSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.inte
 
 // ignore: deprecated_member_use
 typedef FetchRemoteSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
-String _$homeViewModelHash() => r'ca551a581771f5f3cde5dff566e696c9d7bb809e';
+String _$homeViewModelHash() => r'6ca223b5dad2444b6757dc48c64bc019e1f76c86';
 
 /// See also [HomeViewModel].
 @ProviderFor(HomeViewModel)

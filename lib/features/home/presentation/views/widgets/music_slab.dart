@@ -7,9 +7,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/providers/song_notifier.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/functions/color_switch.dart';
-import '../../../../../core/widgets/svg_btn.dart';
+import '../../../../../core/widgets/heart_btn.dart';
 
 class MusicSlab extends ConsumerWidget {
   const MusicSlab({super.key});
@@ -79,7 +78,7 @@ class MusicSlab extends ConsumerWidget {
                         ),
                         Row(
                           children: [
-                            SvgBtn(onPress: () {}, asset: Assets.heart),
+                            const HeartBtn(),
                             IconButton(
                               onPressed: () => songNotifier.playPause(),
                               icon: Icon(

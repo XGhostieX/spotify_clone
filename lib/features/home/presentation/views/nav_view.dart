@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../library/presentation/views/library_view.dart';
 import 'home_view.dart';
-import 'upload_song_view.dart';
 import 'widgets/music_slab.dart';
 
 class NavView extends StatelessWidget {
@@ -15,7 +15,8 @@ class NavView extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: controller,
-      screens: [const HomeView(), const UploadSongView()],
+      // screens: [const HomeView(), const LibraryView()],
+      screens: [const LibraryView(), const HomeView()],
       floatingActionButton: const Material(child: MusicSlab()),
       items: [
         PersistentBottomNavBarItem(

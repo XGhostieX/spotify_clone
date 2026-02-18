@@ -45,6 +45,7 @@ class _SignUpState extends ConsumerState<SignUpViewBody> {
             CustomField(
               controller: nameController,
               hint: 'Name',
+              type: TextInputType.name,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your name';
@@ -59,6 +60,7 @@ class _SignUpState extends ConsumerState<SignUpViewBody> {
             CustomField(
               controller: emailController,
               hint: 'Email',
+              type: TextInputType.emailAddress,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email';
