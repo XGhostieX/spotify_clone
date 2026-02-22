@@ -15,8 +15,7 @@ class NavView extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: controller,
-      // screens: [const HomeView(), const LibraryView()],
-      screens: [const LibraryView(), const HomeView()],
+      screens: [const HomeView(), const LibraryView()],
       floatingActionButton: const Material(child: MusicSlab()),
       items: [
         PersistentBottomNavBarItem(
